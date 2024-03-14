@@ -2,7 +2,7 @@
 <head>
 <style>
     html{
-            font-size: 14px;
+            font-size: 16px;
         }
         
     body{
@@ -89,7 +89,6 @@
         margin-top: -5px;
         color: #ff430a;
     }
-
     p {
         padding: 0 20px;
         text-align: center;
@@ -103,12 +102,28 @@
         margin: 0 0 1.75em;
         line-height: 1.6em;
     }
-    button {
+    .buttn {
+        margin-bottom: 40px;
+    }
+    .buttn a {
+        height: 2rem;
+        width: 100%;
+        padding: 0.8rem 0;
+        border: none;
+        background-color: #ff7d1a;
+        border-radius: 1rem;
+        color: #fff;
+        font-size: 1rem;
+        padding: 10px;
+        gap: 1rem;
+        box-shadow: 1px 1rem 1.5rem rgba(0, 0, 0, 0.13);
+        transition: all 0.3s;
         outline: 0;
         -webkit-appearance: none;
         -moz-appearance: none;
         overflow: visible;
     }
+
     button, html input[type="button"], input[type="reset"], input[type="submit"] {
         -webkit-appearance: button;
         cursor: pointer;
@@ -120,6 +135,31 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+    }
+    article section {
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        flex: 1 1 50%;
+    }
+    article section div {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    article section img{
+        max-width: 50%;
+    }
+    article section:nth-child(4n+2) {
+        background-color: beige;
+    }
+    article #about {
+        padding: 30px 10%;
+        background-color: beige;
+        text-align: center;
+        display: block;
     }
     form{
         margin: auto;
@@ -147,6 +187,7 @@
         padding: 10px;
     }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
    </head> 
     <body>
     <header>
@@ -154,9 +195,10 @@
                     <h1 class="logo"><a class="current navbar-brand" href="https://Benard-Kiplangat.github.io/" rel="nofollow">Rhojees Online Shoe Shop</a></h1>
             </div>
             <nav role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
-                                <a href="/about">About</a>
-                                <a href="/contact">Contact</a>
-                                <a href="/">Home</a> 
+                                <a href="#feature">Features</a>
+                                <a href="#about">About</a>
+                                <a href="#contact">Contact</a>
+                                <a href="/">Home</a>
             </nav>           
     </header>
         <div class="entry-content">
@@ -166,11 +208,45 @@
                 <h1>Rhojees Online Shoe Shop</h1>
                 <h3>The leading online shoe shop in Kenya</h3>
                 <p>Find the most affordable and reliable shoes delivered conviniently from our new online web store.</p>
+                <div class="buttn"><a target="_blank" href="https://Benard-Kiplangat.github.io/rhojees">Go To Rhojees Online Shoe Shop</a></div>
             </div>
         </div>
     <main class="content" id="content">
-        <article class="post" aria-label="About">
-
+        <article class="post" id="feature">
+            <section>
+                <img src="rhojees/design/desktop-design.jpg" alt="ecommerce ss">
+                <div>
+                    <h3>Browse Your Favorite Shoes</h3>
+                    <p>Find the top deals of shoes that you can purchase directly from our shoe shop. See the current prices and discounts of each shoe that we sell on our store.</p>
+                </div>
+            </section>
+            <section>
+                <img src="rhojees/design/desktop-design.jpg" alt="ecommerce ss">
+                <div>
+                    <h3>Detailed Info For Each Shoe</h3>
+                    <p>Tap on each shoe to check more about its specifications. You can add it to cart directly or tweak the quantity you would like to purchase before adding it to cart. All other necessary details are included on this page and is unique to all shoes that are available for sale on our shoe store.</p>
+                </div>
+            </section>
+            <section>
+                <img src="rhojees/design/active-states-basket-filled.jpg" alt="ecommerce ss">
+                <div>
+                    <h3>Order Your Favorite Shoes</h3>
+                    <p>Select the best shoes that you like by adding it to cart to continue with the next purchasing step. Add as many shoes and quantity as you. You can edit your cart by reducing the quantity or removing the shoes if you change your mind. From their you can confirm the total prices of all the shoes you would like to purchase before proceeding to the next step.</p>
+                </div>
+            </section>
+            <section>
+                <img src="rhojees/design/mobile-design.jpg" alt="ecommerce ss">
+                <div>
+                    <h3>Buy your shoes on the go</h3>
+                    <p>Use your smartphone to purchase your shoes! With our store's mobile friendly site, you can find the top deals of shoes that you like and purchase them directly without any hassles for you to enjoy the best shopping experiences.</p>
+                </div>
+            </section>
+        </article>
+        <article>
+            <section id="about">
+                <h2>About Rhojees Online Shoe Shop</h2>
+                Rhojees online shoe shop is a leading shoe store that allows millions of Kenyans to access affordable shoes at their doorstep. Users can view and order their favorite shoes directly from the comfort of their homes.
+            </section>
         </article>
     </main>
      <footer>COPYRIGHT © 2024 Rhojees Online Shoe Shop, NAIROBI, KENYA. DISCLOSURE.</footer>
