@@ -66,16 +66,33 @@
     main{
         margin-top: 100px;
     }
-    .entry-content {
+    .entry-content .img{
         padding-top: 10px;
         width: 100%;
+        background: url("rhojees/images/ShoeShop.jpg") no-repeat;
+        height: 100%;
+        background-size: cover;
+    }
+    .entry-content .content{
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         background-color: bisque;
     }
-    .entry-content img {
-        
+
+    .content h1 {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .content h3 {
+        margin-top: -5px;
+        color: #ff430a;
+    }
+
+    p {
+        padding: 0 20px;
+        text-align: center;
     }
     .main ol, .main p, .main ul {
         font-size: 1.45em;
@@ -143,10 +160,13 @@
             </nav>           
     </header>
         <div class="entry-content">
-            <img src="rhojees/images/ShoeShop.jpg" alt="Shoe Shop banner">
-            <h1>Rhojees Online Shoe Shop</h1>
-            <h3>The leading online shoe shop in Kenya</h3>
-            <p>Find the most affordable and reliable shoes delivered conviniently and promptly at your doorstep</p>
+            <div class="img">
+            </div>
+            <div class="content">
+                <h1>Rhojees Online Shoe Shop</h1>
+                <h3>The leading online shoe shop in Kenya</h3>
+                <p>Find the most affordable and reliable shoes delivered conviniently from our new online web store.</p>
+            </div>
         </div>
     <main class="content" id="content">
         <article class="post" aria-label="About">
