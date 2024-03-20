@@ -1,6 +1,72 @@
 "use strict";
 
+// Shoes //
+
+const shoes = [{
+  shoeID: 1,
+  shoeName: "J1 Black",
+  shoeDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aspernatur nostrum similique labore, eos fugit minus totam temporibus rem suscipit eius corrupti, maiores deserunt. Consectetur, et!",
+  shoeImg: "images/image-product-1-thumbnail.jpg",
+  shoeCompany: "Sneakers International",
+  shoePrice: 50,
+  shoeDiscount: 10
+},
+{
+  shoeID: 2,
+  shoeName: "J2 Black",
+  shoeDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aspernatur nostrum similique labore, eos fugit minus totam temporibus rem suscipit eius corrupti, maiores deserunt. Consectetur, et!",
+  shoeImg: "images/image-product-1-thumbnail.jpg",
+  shoeCompany: "Sneakers International",
+  shoePrice: 50,
+  shoeDiscount: 10
+},
+{
+  shoeID: 3,
+  shoeName: "J3 Black",
+  shoeDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aspernatur nostrum similique labore, eos fugit minus totam temporibus rem suscipit eius corrupti, maiores deserunt. Consectetur, et!",
+  shoeImg: "images/image-product-1-thumbnail.jpg",
+  shoeCompany: "Sneakers International",
+  shoePrice: 50,
+  shoeDiscount: 10
+},
+{
+  shoeID: 4,
+  shoeName: "J4 Black",
+  shoeDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aspernatur nostrum similique labore, eos fugit minus totam temporibus rem suscipit eius corrupti, maiores deserunt. Consectetur, et!",
+  shoeImg: "images/image-product-1-thumbnail.jpg",
+  shoeCompany: "Sneakers International",
+  shoePrice: 50,
+  shoeDiscount: 10
+},
+{
+  shoeID: 5,
+  shoeName: "J5 Black",
+  shoeDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aspernatur nostrum similique labore, eos fugit minus totam temporibus rem suscipit eius corrupti, maiores deserunt. Consectetur, et!",
+  shoeImg: "images/image-product-1-thumbnail.jpg",
+  shoeCompany: "Sneakers International",
+  shoePrice: 50,
+  shoeDiscount: 10
+}];
+
 // /////////// Tab component
+
+let shoeContainer = document.querySelector(".shoes");
+let shoeItems = "";
+
+shoes.forEach((el) => elemCreator(el));
+
+function elemCreator(el) {
+  shoeItems += `<div class="shoe">
+  <img src="${el.shoeImg}" class="product-image-small" alt="shoes">
+  <div class="shoename">${el.shoeName}</div>
+  <div class="sprice">$${el.shoePrice} <span>${el.shoeDiscount}%</span></div>
+  <button  id="${el.shoeID}" class="cartbtn">
+    Add to cart
+  </button>
+</div>`
+}
+
+shoeContainer.innerHTML = shoeItems;
 
 const tabBox = document.querySelector(".operation-tab-box");
 const tabImage = document.querySelectorAll(".product-image-small");
@@ -29,7 +95,7 @@ function removeOvarlay() {
 
 const number = document.querySelector(".number-box");
 const quantity = document.querySelector("#quanity");
-let productQuantity;
+let productQuantity = 0;
 
 //
 number.addEventListener("click", function (e) {
@@ -52,15 +118,14 @@ number.addEventListener("click", function (e) {
 // Add to cart button functionality
 
 const btn = document.querySelectorAll(".btn");
-const cartbtn = document.querySelectorAll(".cartbtn");
+const cartBtn = document.querySelectorAll(".cartbtn");
 const productNumber = document.querySelector(".product-number");
 const emptyContent = document.querySelector(".cart-content-empty");
 const fullContent = document.querySelector(".cart-content-full");
-
-const cartQuantity = document.querySelector("#quantity");
-const cartTotal = document.querySelector("#total");
+const cartContainer = document.querySelector(".cart-item-content");
 
 function generalStyle() {
+  productQuantity += 1;
   productNumber.textContent = productQuantity;
   productNumber.classList.remove("d-block");
   emptyContent.classList.add("show");
@@ -68,21 +133,36 @@ function generalStyle() {
 }
 // Add to cart button functionality
 //
-btn.forEach((el) => btneventer(el));
-cartbtn.forEach((el) => btneventer(el));
 
-function btneventer (el) {
-  console.log("Hello hello")
+let itemHTML = document.querySelector(".cart-item-content");
+let cartTotal = 12;
+let cartTotalContainer = document.querySelector("#cartTotal");
+
+btn.forEach((el) => btnEventer(el));
+cartBtn.forEach((el) => btnEventer(el));
+
+function btnEventer (el) {
   el.addEventListener("click", function (e) {
     productNumber.textContent = productQuantity;
 
     generalStyle();
-    if (productQuantity > 0) {
+    let shoeElemID = Number(el.id);
+    let shoe = shoes[shoeElemID];
       productNumber.classList.add("d-block");
       emptyContent.classList.remove("show");
       fullContent.classList.add("show");
-      cartQuantity.textContent = productQuantity;
-      cartTotal.textContent = `$${productQuantity * 125}`;
+
+      itemHTML = `<div class="cartItemInfo center">
+      <img class="cartItemImg" src="${shoe.shoeImg}" alt="shoe">
+      <div class="cartItemPriceinfo">
+        <span class="cartItemTitle">${shoe.shoeName}</span><span class="cartItemTotal">$${shoe.shoePrice}</span>
+      </div>
+      <img src="images/icon-delete.svg" alt="icon-delete" class="delete-icon" id="${shoe.shoeID}">
+    </div>`
+    cartContainer.innerHTML += itemHTML;
+    cartTotal = shoe.shoePrice;
+    cartTotal += Number(cartTotalContainer.textContent);
+    cartTotalContainer.textContent = cartTotal;
 
       // delete icon functionality
       document
@@ -92,7 +172,6 @@ function btneventer (el) {
           productQuantity = 0;
           generalStyle();
         });
-    }
     removeOvarlay();
   });
 };
@@ -105,92 +184,6 @@ const ovarlayCart = document.querySelector(".ovarlay-cart");
 cartIcon.addEventListener("click", function (e) {
   ovarlayCart.classList.toggle("d-block");
   ovarlayCart.classList.toggle("height");
-});
-
-// ///////////////////////////////////////////////
-// *******************  Slider *****************//
-// ///////////////////////
-
-const slides = document.querySelectorAll(".slide");
-const slider = document.querySelector(".slider");
-const btnLeft = document.querySelector(".slider__btn--left");
-const btnRight = document.querySelector(".slider__btn--right");
-const dotContainer = document.querySelector(".ovarlay-operation-tab-box");
-
-let curSlide = 0;
-const maxslide = slides.length;
-//
-const activeImg = function (slide) {
-  document
-    .querySelectorAll(".slider-dot")
-    .forEach((el) => el.classList.remove("slider-dot-active"));
-
-  document
-    .querySelector(`.slider-dot[data-tab="${slide}"]`)
-    .classList.add("slider-dot-active");
-};
-activeImg(0);
-//
-const goToSlide = function (slide) {
-  slides.forEach((s, i) => {
-    s.style.transform = `translateX(${100 * (i - slide)}%)`;
-  });
-};
-goToSlide(0);
-
-const nextSlide = function (slide) {
-  if (curSlide === maxslide - 1) {
-    curSlide = 0;
-  } else {
-    curSlide++;
-  }
-  goToSlide(curSlide);
-  activeImg(curSlide);
-};
-
-const prevSlide = function (slide) {
-  if (curSlide === 0) {
-    curSlide = maxslide - 1;
-  } else curSlide--;
-
-  goToSlide(curSlide);
-  activeImg(curSlide);
-};
-
-btnRight.addEventListener("click", nextSlide);
-btnLeft.addEventListener("click", prevSlide);
-
-document.addEventListener("keydown", function (e) {
-  if (e.key === "ArrowRight") nextSlide();
-  else if (e.key === "ArrowLeft") prevSlide();
-  else if (e.key === "Escape") {
-    ovarlaySlider.classList.remove("ovarlay-active");
-  }
-});
-
-dotContainer.addEventListener("click", function (e) {
-  if (e.target.classList.contains("slider-dot")) {
-    const slide = e.target.dataset.tab;
-    goToSlide(slide);
-    curSlide = parseInt(slide, 10);
-    activeImg(slide);
-  }
-});
-
-const productImage = document.querySelectorAll(".product-image");
-const ovarlaySlider = document.querySelector(".main-ovarlay");
-
-productImage.forEach((el, i) => {
-  el.addEventListener("click", function (e) {
-    ovarlaySlider.classList.add("ovarlay-active");
-    goToSlide(i);
-    curSlide = i;
-    activeImg(i);
-  });
-});
-
-document.querySelector(".slider-delete").addEventListener("click", function () {
-  ovarlaySlider.classList.remove("ovarlay-active");
 });
 
 ///////////////////////////////////////

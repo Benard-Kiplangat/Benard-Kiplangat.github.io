@@ -72,7 +72,6 @@ header .container {
 .ovarlay-cart {
   width: 36rem;
   /* height: 25.5rem; */
-  height: 0rem;
   position: absolute;
   top: 6rem;
   right: -5rem;
@@ -94,13 +93,15 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  min-height: 70%;
 }
 .cart-content-empty {
   display: none;
   font-size: 1.7rem;
   font-weight: bold;
   color: var(--dg-blue);
+  height: 24rem;
+  padding-top: 10.2rem;
 }
 .add-cart {
   position: relative;
@@ -125,28 +126,24 @@ h4 {
   visibility: visible;
 }
 
-.height {
-  height: 25.5rem;
-}
-
 .cart-content-full {
   padding: 1.8rem;
   display: none;
 }
-.cart-info {
+.cartItemInfo {
   gap: 2rem;
   justify-content: space-between;
   color: var(--dg-blue);
   line-height: 1.6;
 }
-.cart-info img {
+.cartItemInfo img {
   width: 5rem;
   border-radius: 5px;
 }
-.price-info {
+.cartItemPriceInfo {
   font-size: 1.2rem;
 }
-#total {
+#cartItemTotal {
   font-weight: 700;
 }
 .delete-icon {
@@ -154,7 +151,7 @@ h4 {
   width: 2.4rem !important;
   color: #333;
 }
-.cart-content-full .btn {
+.cart-content-full .btnCheckout {
   margin-top: 2.7rem;
   width: 100%;
 }
@@ -268,7 +265,7 @@ h3 {
   font-weight: bold;
 }
 
-.btn {
+.btn, .btnCheckout {
   border: none;
   background-color: var(--main-color);
   border-radius: 1rem;
@@ -279,6 +276,7 @@ h3 {
   box-shadow: 1px 1rem 1.5rem rgba(0, 0, 0, 0.13);
   transition: all 0.3s;
 }
+
 .btn:hover {
   background-color: rgba(255, 125, 26, 0.7);
 }
